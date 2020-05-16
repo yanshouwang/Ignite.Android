@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ColorView">
+        <attr name="color" />
+    </declare-styleable>
+    <declare-styleable name="CircleView">
+        <attr name="color" />
+        <attr name="paintStyle" format="enum">
+            <enum name="fill" value="0" />
+            <enum name="stroke" value="1" />
+            <enum name="fill_and_stroke" value="2" />
+        </attr>
+        <attr name="strokeWidth" />
+    </declare-styleable>
+    <declare-styleable name="ArcView">
+        <attr name="color" />
+        <attr name="android:strokeLineCap" />
+        <attr name="strokeWidth" />
+        <attr name="startAngle" format="float" />
+        <attr name="sweepAngle" format="float" />
+    </declare-styleable>
+    <declare-styleable name="CrossView">
+        <attr name="cocurrent" format="boolean" />
+        <attr name="fillType" format="enum">
+            <enum name="winding" value="0" />
+            <enum name="even_odd" value="1" />
+            <enum name="inverse_winding" value="2" />
+            <enum name="inverse_even_odd" value="3" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="HeartView">
+        <attr name="color" />
+    </declare-styleable>
+</resources>

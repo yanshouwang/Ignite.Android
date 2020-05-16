@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Concave">
+        <attr name="color" />
+        <attr name="curveColor" format="color" />
+        <attr name="circleColor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="Circle">
+        <attr name="color" />
+    </declare-styleable>
+    <declare-styleable name="Token">
+        <attr name="android:textSize" />
+        <attr name="android:duration" />
+        <attr name="cardColor" format="color" />
+        <attr name="numberColor" format="color" />
+        <attr name="inactiveColor" format="color" />
+        <attr name="activeColor" format="color" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Demo1</string>
+    <string name="draw_color">drawColor</string>
+    <string name="draw_circle">drawCircle</string>
+    <string name="draw_arc">drawArc</string>
+    <string name="draw_heart">drawHeart</string>
+    <string name="draw_cross">drawCross</string>
+</resources>
