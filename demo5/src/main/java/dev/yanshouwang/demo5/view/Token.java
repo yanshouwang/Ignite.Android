@@ -13,7 +13,6 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
@@ -40,7 +39,7 @@ public class Token extends View {
     private final ValueAnimator _cardAnimator;
     private final ValueAnimator _lineAnimator;
     private float _downX;
-    private boolean _slide;
+    private boolean _consumed;
 
     public Token(Context context) {
         this(context, null);
@@ -220,7 +219,7 @@ public class Token extends View {
 
         final int width = MeasureSpec.getSize(widthMeasureSpec);
         final float strokeWidth = _linePaint.getStrokeWidth();
-        final double desiredHeight = width * (7 * 1.8 + 1) / 49 + strokeWidth / 2.0;
+        final double desiredHeight = width * (7.0 * 1.8 + 1.0) / 47.0 + strokeWidth / 2.0;
         final int height = (int) Math.ceil(desiredHeight);
         final int measuredWidth = resolveSize(width, widthMeasureSpec);
         final int measuredHeight = resolveSize(height, heightMeasureSpec);
@@ -238,11 +237,13 @@ public class Token extends View {
 
     private void updateLineLocations() {
         final RectF card0 = _cards[0];
+        final RectF card1 = _cards[1];
         final RectF card5 = _cards[5];
+        final float unit = card1.left - card0.right;
         final float strokeWidth = _linePaint.getStrokeWidth();
         final float x0 = card0.left;
         final float x1 = card5.right;
-        final float y = card0.bottom + x0 + strokeWidth / 2f;
+        final float y = card0.bottom + unit + strokeWidth / 2f;
         final PointF location0 = _lineLocations[0];
         final PointF location1 = _lineLocations[1];
         final PointF location2 = _lineLocations[2];
@@ -273,7 +274,7 @@ public class Token extends View {
     }
 
     private void updateCards(int w, int h) {
-        final float unit = w / 49f;
+        final float unit = w / 47f;
         final float width = unit * 7f;
         final float height = width * 1.8f;
         final float strokeWidth = _linePaint.getStrokeWidth();
@@ -284,12 +285,12 @@ public class Token extends View {
         _r = unit * 0.5f;
         float x = 0f;
         for (RectF rect : _cards) {
-            x += unit;
             rect.left = x;
             rect.top = top;
             x += width;
             rect.right = x;
             rect.bottom = bottom;
+            x += unit;
         }
     }
 
@@ -323,30 +324,36 @@ public class Token extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        final float x = event.getX();
+        final float y = event.getY();
         final int action = event.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                _downX = event.getX();
-                _slide = false;
+                _downX = x;
+                _consumed = false;
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (_slide) {
+                if (_consumed) {
                     break;
                 }
-                final float moveX = event.getX();
-                final float distance = Math.abs(moveX - _downX);
-                final float width = _cards[0].width();
+                final float distance = Math.abs(x - _downX);
+                final float threshold = _cards[0].width();
                 final float duration = event.getEventTime() - event.getDownTime();
-                if (distance > width && duration < 1000L) {
+                if (distance > threshold && duration < 1000L) {
                     _cardAnimator.start();
-                    _slide = true;
+                    _consumed = true;
                 }
                 break;
             case MotionEvent.ACTION_UP:
+                final float width = getWidth();
+                final float height = getHeight();
+                if (x < 0f || x > width || y < 0 || y > height) {
+                    break;
+                }
                 performClick();
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d(Token.class.getSimpleName(), "onTouchEvent: AAA");
+                _consumed = true;
                 break;
         }
         return true;
