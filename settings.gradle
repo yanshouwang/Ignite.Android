@@ -1,7 +1,6 @@
 rootProject.name='Ignite'
 include ':demo1'
 include ':demo2'
-include ':core'
 include ':demo3'
 include ':demo4'
 include ':demo5'
