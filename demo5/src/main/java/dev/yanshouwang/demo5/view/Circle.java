@@ -37,7 +37,7 @@ public class Circle extends View {
 
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.Circle, defStyleAttr, defStyleRes);
         try {
-            final int defColor = ContextCompat.getColor(context, R.color.colorAccent);
+            final int defColor = ContextCompat.getColor(context, R.color.accent);
             final int color = a.getColor(R.styleable.Circle_color, defColor);
             _paint.setColor(color);
         } finally {

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E0E0E0"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -23,6 +22,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@null"
+        android:tint="@color/on_primary"
+        app:layout_constraintBottom_toTopOf="@+id/h50"
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5"
+        app:srcCompat="@drawable/ic_mi" />
+
     <dev.yanshouwang.demo5.view.Circle
         android:id="@+id/circle"
         android:layout_width="0dp"
@@ -35,24 +48,11 @@
         app:layout_constraintWidth_percent="0.2" />
 
     <ImageView
-        android:id="@+id/logo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@null"
-        app:layout_constraintBottom_toTopOf="@+id/h50"
-        app:layout_constraintDimensionRatio="1.0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.5"
-        app:srcCompat="@drawable/ic_mi" />
-
-    <ImageView
         android:id="@+id/code"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@null"
-        android:tint="@color/text_dark_selector"
+        android:tint="@color/on_accent_clickable"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1.0"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +80,7 @@
         android:letterSpacing="0.3"
         android:singleLine="true"
         android:text="@string/update"
-        android:textColor="@color/text_light_selector"
+        android:textColor="@color/on_surface_clickable"
         app:layout_constraintEnd_toStartOf="@+id/state"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@+id/token"

@@ -37,7 +37,7 @@ public class Concave extends View {
 
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.Concave, defStyleAttr, defStyleRes);
         try {
-            final int defColor = ContextCompat.getColor(context, R.color.colorPrimary);
+            final int defColor = ContextCompat.getColor(context, R.color.primary);
             final int color = a.getColor(R.styleable.Concave_color, defColor);
             _paint.setColor(color);
         } finally {

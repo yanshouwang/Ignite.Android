@@ -73,10 +73,10 @@ public class Token extends View {
             final int defDuration = res.getInteger(R.integer.token_duration);
             final long duration = a.getInteger(R.styleable.Token_android_duration, defDuration);
             _lineAnimator = ValueAnimator.ofFloat(0f, 1f).setDuration(duration);
-            final int defCardColor = ContextCompat.getColor(context, R.color.colorAccent);
+            final int defCardColor = ContextCompat.getColor(context, R.color.accent);
             final int cardColor = a.getColor(R.styleable.Token_cardColor, defCardColor);
             _cardPaint.setColor(cardColor);
-            final int defNumberColor = ContextCompat.getColor(context, android.R.color.primary_text_dark);
+            final int defNumberColor = ContextCompat.getColor(context, R.color.on_accent);
             final int numberColor = a.getColor(R.styleable.Token_numberColor, defNumberColor);
             _numberPaint.setColor(numberColor);
             final float defSize = res.getDimension(R.dimen.token_text_size);
@@ -84,7 +84,7 @@ public class Token extends View {
             _numberPaint.setTextSize(size);
             final int inactiveColor = ContextCompat.getColor(context, android.R.color.darker_gray);
             _inactiveColor = a.getColor(R.styleable.Token_inactiveColor, inactiveColor);
-            final int activeColor = ContextCompat.getColor(context, R.color.colorPrimary);
+            final int activeColor = ContextCompat.getColor(context, R.color.primary);
             _activeColor = a.getColor(R.styleable.Token_activeColor, activeColor);
         } finally {
             a.recycle();
